@@ -11,7 +11,7 @@ class SignUpUsecase {
 
   SignUpUsecase(this.repository);
 
-  Future<Either<UserModel, SignUpException>> call(UserDto userDto) async {
+  Future<Either<UserModel?, SignUpException>> call(UserDto userDto) async {
     if (!_isValidEmail(userDto.email)) {
       return Failure<UserModel, SignUpUsecaseException>(SignUpUsecaseException(
           label: "$runtimeType", messageErro: userDto.email.email));

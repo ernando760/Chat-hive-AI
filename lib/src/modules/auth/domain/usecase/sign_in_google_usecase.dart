@@ -11,7 +11,7 @@ class SignInGoogleUsecase {
 
   SignInGoogleUsecase(this.repository);
 
-  Future<Either<UserModel, SignInException>> call(UserDto userDto) async {
+  Future<Either<UserModel?, SignInException>> call(UserDto userDto) async {
     if (!_isValidEmail(userDto.email)) {
       return Failure<UserModel, SignInGoogleUsecaseException>(
           SignInGoogleUsecaseException(
