@@ -24,3 +24,8 @@ class SignInGoogleUsecaseException extends SignInException {
   SignInGoogleUsecaseException(
       {required super.label, required super.messageErro, super.stackTrace});
 }
+
+class SignInServiceException extends SignInException {
+  SignInServiceException(
+      {required super.label, required super.messageErro, super.stackTrace});
+}

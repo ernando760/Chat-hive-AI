@@ -4,3 +4,8 @@ class IsUserLoggedException extends ExceptionBase {
   IsUserLoggedException(
       {required super.label, required super.messageErro, super.stackTrace});
 }
+
+class IsUserLoggedServicesException extends IsUserLoggedException {
+  IsUserLoggedServicesException(
+      {required super.label, required super.messageErro, super.stackTrace});
+}

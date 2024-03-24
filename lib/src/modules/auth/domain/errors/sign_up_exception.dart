@@ -14,3 +14,8 @@ class SignUpUsecaseException extends SignUpException {
   SignUpUsecaseException(
       {required super.label, required super.messageErro, super.stackTrace});
 }
+
+class SignUpServiceException extends SignUpException {
+  SignUpServiceException(
+      {required super.label, required super.messageErro, super.stackTrace});
+}
