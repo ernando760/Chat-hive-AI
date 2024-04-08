@@ -1,23 +1,28 @@
 import 'package:chat_hive_ai/src/modules/auth/domain/errors/sign_in_exception.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/user_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/user_model.dart';
+
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/user_model.dart';
 import 'package:chat_hive_ai/src/modules/auth/domain/repositories/sign_in_google_repository.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/services/sign_in_service.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/services/sign_in_google_service.dart';
+
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
+import 'package:provider/provider.dart';
+
+final $SignInGoogleRepositoryProvider = Provider<SignInGoogleRepository>(
+    create: (context) =>
+        SignInGoogleRepositoryImpl(context.read<SignInGoogleService>()));
 
 class SignInGoogleRepositoryImpl implements SignInGoogleRepository {
-  SignInGoogleRepositoryImpl(this.service);
-  final SignInService service;
+  SignInGoogleRepositoryImpl(this._service);
+  final SignInGoogleService _service;
 
   @override
-  Future<Either<UserModel?, SignInGoogleRepositoryException>> call(
-      UserDto userDto) async {
-    final res = await service(userDto);
+  Future<Either<UserEntity?, SignInGoogleRepositoryException>> call() async {
+    final res = await _service();
 
     return switch (res) {
-      Success<UserModel?, SignInServiceException>(:final success) =>
+      Success<UserEntity?, SignInServiceException>(:final success) =>
         Success(success),
-      Failure<UserModel?, SignInServiceException>(:final failure) => Failure(
+      Failure<UserEntity?, SignInServiceException>(:final failure) => Failure(
           SignInGoogleRepositoryException(
               label: "$runtimeType => ${failure.label}",
               messageErro: failure.messageErro,
