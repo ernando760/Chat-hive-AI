@@ -1,25 +1,29 @@
 import 'package:chat_hive_ai/src/modules/auth/domain/errors/sign_up_exception.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/email_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/password_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/user_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/user_model.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/dto/email_dto.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/dto/password_dto.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/dto/user_dto.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/user_model.dart';
 import 'package:chat_hive_ai/src/modules/auth/domain/repositories/sign_up_repository.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
+import 'package:provider/provider.dart';
+
+final $SignUpUsecaseProvider = Provider(
+    create: (context) => SignUpUsecase(context.read<SignUpRepository>()));
 
 class SignUpUsecase {
-  final SignUpRepository repository;
+  final SignUpRepository _repository;
 
-  SignUpUsecase(this.repository);
+  SignUpUsecase(this._repository);
 
-  Future<Either<UserModel?, SignUpException>> call(UserDto userDto) async {
+  Future<Either<UserEntity?, SignUpException>> call(UserDto userDto) async {
     if (!_isValidEmail(userDto.email)) {
-      return Failure<UserModel, SignUpUsecaseException>(SignUpUsecaseException(
+      return Failure<UserEntity, SignUpUsecaseException>(SignUpUsecaseException(
           label: "$runtimeType", messageErro: userDto.email.email));
     } else if (!_isValidPassword(userDto.password)) {
-      return Failure<UserModel, SignUpUsecaseException>(SignUpUsecaseException(
+      return Failure<UserEntity, SignUpUsecaseException>(SignUpUsecaseException(
           label: "$runtimeType", messageErro: userDto.password.password));
     }
-    return await repository.call(userDto);
+    return await _repository.call(userDto);
   }
 
   bool _isValidEmail(EmailDto email) => email.isValidEmail() == null;
