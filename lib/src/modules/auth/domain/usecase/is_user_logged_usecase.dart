@@ -4,7 +4,7 @@ import 'package:chat_hive_ai/src/modules/auth/domain/repositories/is_user_logged
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:provider/provider.dart';
 
-final isUserLoggedUsecaseProvider = Provider(
+final $IsUserLoggedUsecaseProvider = Provider(
     create: (context) =>
         IsUserLoggedUsecase(context.read<IsUserLoggedRepository>()));
 
