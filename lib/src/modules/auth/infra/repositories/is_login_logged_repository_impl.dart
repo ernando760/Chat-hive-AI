@@ -6,12 +6,12 @@ import 'package:chat_hive_ai/src/modules/auth/domain/repositories/is_user_logged
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:provider/provider.dart';
 
-final isLoginLoggedRepositoryProvider = Provider<IsUserLoggedRepository>(
+final $IsUserLoggedRepositoryProvider = Provider<IsUserLoggedRepository>(
     create: (context) =>
-        IsLoginLoggedRepositoryImpl(context.read<IsUserLoggedService>()));
+        IsUserLoggedRepositoryImpl(context.read<IsUserLoggedService>()));
 
-class IsLoginLoggedRepositoryImpl implements IsUserLoggedRepository {
-  IsLoginLoggedRepositoryImpl(this._service);
+class IsUserLoggedRepositoryImpl implements IsUserLoggedRepository {
+  IsUserLoggedRepositoryImpl(this._service);
   final IsUserLoggedService _service;
 
   @override
