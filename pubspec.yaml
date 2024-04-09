@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   firebase_core: ^2.27.1
+  cloud_firestore: ^4.16.0
   provider: ^6.1.2
 
   chat_hive_ai_core:
@@ -21,6 +22,7 @@ dependencies:
   equatable: ^2.0.5
   firebase_auth: ^4.17.9
   google_sign_in: ^6.2.1
+  svg_flutter: ^0.0.1
   
 
 dev_dependencies:
