@@ -1,19 +1,24 @@
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/dto/email_dto.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/user_model.dart';
 import 'package:chat_hive_ai/src/modules/auth/domain/errors/is_user_logged_exception.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/email_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/user_model.dart';
+
 import 'package:chat_hive_ai/src/modules/auth/domain/services/is_user_logged_service.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+
+final $IsUserLoggedServiceProvider = Provider<IsUserLoggedService>(
+    create: (context) => FirebaseIsUserLoggedServiceImpl());
 
 class FirebaseIsUserLoggedServiceImpl implements IsUserLoggedService {
   @override
-  Future<Either<UserModel?, IsUserLoggedServicesException>> call() async {
+  Future<Either<UserEntity?, IsUserLoggedServicesException>> call() async {
     try {
       final firebaseAuth = FirebaseAuth.instance;
 
       final isLogged = firebaseAuth.currentUser != null;
       if (isLogged) {
-        final user = UserModel(
+        final user = UserEntity(
             username: firebaseAuth.currentUser!.displayName!,
             email: EmailDto(email: firebaseAuth.currentUser!.email!));
         return Success(user);

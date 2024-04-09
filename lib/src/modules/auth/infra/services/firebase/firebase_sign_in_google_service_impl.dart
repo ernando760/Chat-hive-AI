@@ -1,15 +1,17 @@
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/dto/email_dto.dart';
+import 'package:chat_hive_ai/src/modules/auth/domain/entities/user_model.dart';
 import 'package:chat_hive_ai/src/modules/auth/domain/errors/sign_in_exception.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/dto/user_dto.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/model/user_model.dart';
-import 'package:chat_hive_ai/src/modules/auth/domain/services/sign_in_service.dart';
+import 'package:chat_hive_ai/src/modules/auth/presenter/provider/barrel/auth_provider_barrel.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class FirebaseSignInGoogleServiceImpl implements SignInService {
+final $SignInGoogleServiceProvider = Provider<SignInGoogleService>(
+    create: (context) => FirebaseSignInGoogleServiceImpl());
+
+class FirebaseSignInGoogleServiceImpl implements SignInGoogleService {
   @override
-  Future<Either<UserModel?, SignInServiceException>> call(
-      UserDto userDto) async {
+  Future<Either<UserEntity?, SignInServiceException>> call() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -24,11 +26,11 @@ class FirebaseSignInGoogleServiceImpl implements SignInService {
           await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (userCredential.user != null) {
-        final user = UserModel(
+        final user = UserEntity(
             id: userCredential.user!.uid,
             username: userCredential.user!.displayName!,
             avatarUrl: userCredential.user!.photoURL,
-            email: userDto.email);
+            email: EmailDto(email: userCredential.user!.email!));
 
         return Success(user);
       }
