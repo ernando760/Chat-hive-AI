@@ -1,7 +1,7 @@
 import 'package:chat_hive_ai/src/modules/auth/presenter/notifiers/auth_notifier.dart';
 import 'package:chat_hive_ai/src/modules/auth/presenter/provider/auth_provider.dart';
-import 'package:chat_hive_ai/src/modules/auth/presenter/widgets/login/form_login_widget.dart';
-import 'package:chat_hive_ai/src/modules/auth/presenter/widgets/register/form_register_widget.dart';
+import 'package:chat_hive_ai/src/modules/auth/presenter/widgets/forms/login/form_login_widget.dart';
+import 'package:chat_hive_ai/src/modules/auth/presenter/widgets/forms/register/form_register_widget.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
