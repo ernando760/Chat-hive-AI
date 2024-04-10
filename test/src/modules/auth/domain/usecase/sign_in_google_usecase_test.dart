@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../../../mock/user_mock.dart';
+import '../../../../../mock/mocks.dart';
 
 class SignInGoogleRepositoryMock extends Mock
     implements SignInGoogleRepository {}

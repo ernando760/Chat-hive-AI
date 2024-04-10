@@ -5,7 +5,7 @@ import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../../../mock/user_mock.dart';
+import '../../../../../mock/mocks.dart';
 
 class MockUpdateChatRepository extends Mock implements UpdateChatRepository {}
 
