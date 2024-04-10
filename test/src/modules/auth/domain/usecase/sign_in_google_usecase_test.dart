@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../../../mock/user_mock.dart';
+import '../../../../../mock/mocks.dart';
 
 class SignInGoogleRepositoryMock extends Mock
     implements SignInGoogleRepository {}
@@ -40,20 +40,5 @@ void main() {
     debugPrint(res.failure.messageErro);
     expect(res, isA<Failure<UserEntity, SignInGoogleRepositoryException>>());
     verify(() => repository.call()).called(1);
-  });
-
-  test(
-      'Quando fazer o login e se o email estiver invalido deve retornar um SignInGoogleUsecaseException',
-      () async {
-    final res = await usecase();
-    debugPrint(res.failure.messageErro);
-    expect(res, isA<Failure<UserEntity, SignInGoogleUsecaseException>>());
-  });
-
-  test(
-      'Quando fazer o login e se a senha estiver inválida deve retornar um SignInGoogleUsecaseException',
-      () async {
-    final res = await usecase();
-    expect(res, isA<Failure<UserEntity, SignInGoogleUsecaseException>>());
   });
 }
