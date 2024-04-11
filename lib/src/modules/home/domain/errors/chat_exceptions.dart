@@ -11,7 +11,8 @@ class FindAllChatsException extends ExceptionBase {
 }
 
 class DeleteChatException extends ExceptionBase {
-  DeleteChatException({required super.label, required super.messageErro});
+  DeleteChatException(
+      {required super.label, required super.messageErro, super.stackTrace});
 }
 
 class UpdateChatException extends ExceptionBase {
