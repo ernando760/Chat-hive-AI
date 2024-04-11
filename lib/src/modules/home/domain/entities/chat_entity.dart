@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 
 import 'package:chat_hive_ai/src/modules/home/domain/entities/message_entity.dart';
+import 'package:flutter/material.dart';
 
 class ChatEntity extends Equatable {
   final String? chatId;
@@ -14,6 +15,18 @@ class ChatEntity extends Equatable {
       required this.title,
       required this.messages,
       this.createdAt});
+
+  ChatEntity copyWith(
+      {ValueGetter<String>? chatId,
+      ValueGetter<String>? title,
+      ValueGetter<List<MessageEntity>>? messages,
+      ValueGetter<DateTime>? createdAt}) {
+    return ChatEntity(
+        chatId: chatId != null ? chatId() : this.chatId,
+        title: title != null ? title() : this.title,
+        messages: messages != null ? messages() : this.messages,
+        createdAt: createdAt != null ? createdAt() : this.createdAt);
+  }
 
   @override
   String toString() =>

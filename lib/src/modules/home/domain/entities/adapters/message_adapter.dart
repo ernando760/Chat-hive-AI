@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:chat_hive_ai/src/modules/home/domain/entities/message_entity.dart';
 
 class MessageAdapter {
+  MessageAdapter._();
   static Map<String, dynamic> toMap(MessageEntity message) {
     return <String, dynamic>{
       'id': message.id,

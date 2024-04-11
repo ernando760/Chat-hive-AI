@@ -4,6 +4,7 @@ import 'package:chat_hive_ai/src/modules/home/domain/entities/adapters/message_a
 import 'package:chat_hive_ai/src/modules/home/domain/entities/chat_entity.dart';
 
 class ChatAdapter {
+  ChatAdapter._();
   static Map<String, dynamic> toMap(ChatEntity chat) {
     return <String, dynamic>{
       'chat_id': chat.chatId,
