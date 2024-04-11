@@ -30,12 +30,10 @@ void main() {
       () async {
     final newChats = updateChat("chat5", "chat update");
     when(
-      () => repository
-          .call(ids: (userId: "userId", chatId: "chat5"), title: "chat update"),
+      () => repository.call(chatId: "chat5", title: "chat update"),
     ).thenAnswer((_) async => Success(newChats));
 
-    final res = await usecase(
-        ids: (userId: "userId", chatId: "chat5"), title: "chat update");
+    final res = await usecase(chatId: "chat5", title: "chat update");
     expect(res.success, newChats);
     expect(
         res.success
@@ -50,34 +48,22 @@ void main() {
   test(
       "Deve retornar uma Exceção com a messagem dizendo 'O id do usuário está vazio.', quando chamo a função [updateChatUsecase.call]",
       () async {
-    final res =
-        await usecase(ids: (userId: "", chatId: "chat5"), title: "chat update");
+    final res = await usecase(chatId: "chat5", title: "chat update");
 
     expect(res.failure.messageErro, 'O id do usuário está vazio.');
   });
 
   test(
-      "Deve retonar uma exceção com uma menssagem dizendo 'O id da conversa está vazio.' quando chamo a função [updateChatUsecase.call]",
-      () async {
-    final res = await usecase(
-        ids: (userId: "userId", chatId: ""), title: "chat update");
-
-    expect(res.failure.messageErro, "O id da conversa está vazio.");
-  });
-
-  test(
       "Deve retonar uma exceção com uma menssagem dizendo 'O titulo não pode está vazio.' quando chamo a função [updateChatUsecase.call]",
       () async {
-    final res =
-        await usecase(ids: (userId: "userId", chatId: "chat5"), title: "");
+    final res = await usecase(chatId: "chat5", title: "");
 
     expect(res.failure.messageErro, "O titulo não pode está vazio.");
   });
   test(
-      "Deve retonar uma exceção com uma menssagem dizendo 'O id do usuário e da conversa está vazio.' quando chamo a função [updateChatUsecase.call]",
+      "Deve retonar uma exceção com uma menssagem dizendo 'O id da conversa está vazio.' quando chamo a função [updateChatUsecase.call]",
       () async {
-    final res =
-        await usecase(ids: (userId: null, chatId: null), title: "chat update");
+    final res = await usecase(chatId: "", title: "chat update");
 
     expect(
         res.failure.messageErro, "O id do usuário e da conversa está vazio.");

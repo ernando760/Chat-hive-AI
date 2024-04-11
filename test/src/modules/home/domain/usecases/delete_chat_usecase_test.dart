@@ -17,13 +17,13 @@ void main() {
       "Deve retornar um lista de conversas quando chamo a função [deleteChatUsecase.call]",
       () async {
     when(
-      () => repository.call(userId: "userId", chatId: "chat5"),
+      () => repository.call(chatId: "chat5"),
     ).thenAnswer((_) async => Success(chats
       ..removeWhere(
         (element) => element.chatId == "chat5",
       )));
 
-    final res = await usecase(userId: "userId", chatId: "chat5");
+    final res = await usecase(chatId: "chat5");
 
     expect(res.success.length, equals(9));
     expect(res.success, chats);
@@ -31,28 +31,14 @@ void main() {
   });
 
   test(
-      "Deve retornar uma Exceção com a messagem dizendo 'O id do usuário está vazio.', quando chamo a função [deleteChatUsecase.call]",
-      () async {
-    when(
-      () => repository.call(userId: "", chatId: "chat5"),
-    ).thenAnswer((_) async => Failure(DeleteChatException(
-        label: "DeleteChatUsecase",
-        messageErro: 'O id do usuário está vazio.')));
-
-    final res = await usecase(userId: "", chatId: "chat5");
-
-    expect(res.failure.messageErro, 'O id do usuário está vazio.');
-  });
-
-  test(
       "Deve retonar uma exceção com uma menssagem dizendo 'O id da conversa está vazio.' quando chamo a função [deleteChatUsecase.call]",
       () async {
     when(
-      () => repository.call(userId: "userId", chatId: ""),
+      () => repository.call(chatId: ""),
     ).thenAnswer((_) async => Failure(DeleteChatException(
         label: "DeleteChatUsecase",
         messageErro: "O id da conversa está vazio.")));
-    final res = await usecase(userId: "userId", chatId: "");
+    final res = await usecase(chatId: "");
 
     expect(res.failure.messageErro, "O id da conversa está vazio.");
   });
