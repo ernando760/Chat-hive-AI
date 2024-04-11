@@ -13,13 +13,13 @@ void main() {
   final UpdateChatRepository repository = MockUpdateChatRepository();
   final UpdateChatUsecase usecase = UpdateChatUsecase(repository);
 
-  List<ChatEntity> updateChat(String id, String title) {
+  List<ChatEntity> updateChat(String id, ChatEntity newChat) {
     return chats.map(
       (element) {
         if (element.chatId != id) {
           return element;
         }
-        element = ChatEntity(chatId: id, title: title, messages: messages);
+        element = newChat;
         return element;
       },
     ).toList();
@@ -28,12 +28,12 @@ void main() {
   test(
       "Deve retornar um lista de conversas quando chamo a função [findAllchatsOfUser]",
       () async {
-    final newChats = updateChat("chat5", "chat update");
+    final newChats = updateChat("chat5", newChat);
     when(
-      () => repository.call(chatId: "chat5", title: "chat update"),
+      () => repository.call(chatId: "chat5", newChat: newChat),
     ).thenAnswer((_) async => Success(newChats));
 
-    final res = await usecase(chatId: "chat5", title: "chat update");
+    final res = await usecase(chatId: "chat5", newChat: newChat);
     expect(res.success, newChats);
     expect(
         res.success
@@ -46,26 +46,18 @@ void main() {
   });
 
   test(
-      "Deve retornar uma Exceção com a messagem dizendo 'O id do usuário está vazio.', quando chamo a função [updateChatUsecase.call]",
-      () async {
-    final res = await usecase(chatId: "chat5", title: "chat update");
-
-    expect(res.failure.messageErro, 'O id do usuário está vazio.');
-  });
-
-  test(
       "Deve retonar uma exceção com uma menssagem dizendo 'O titulo não pode está vazio.' quando chamo a função [updateChatUsecase.call]",
       () async {
-    final res = await usecase(chatId: "chat5", title: "");
+    final res = await usecase(
+        chatId: "chat5", newChat: newChat.copyWith(title: () => ""));
 
     expect(res.failure.messageErro, "O titulo não pode está vazio.");
   });
   test(
       "Deve retonar uma exceção com uma menssagem dizendo 'O id da conversa está vazio.' quando chamo a função [updateChatUsecase.call]",
       () async {
-    final res = await usecase(chatId: "", title: "chat update");
+    final res = await usecase(chatId: "", newChat: newChat);
 
-    expect(
-        res.failure.messageErro, "O id do usuário e da conversa está vazio.");
+    expect(res.failure.messageErro, "O id da conversa está vazio.");
   });
 }
