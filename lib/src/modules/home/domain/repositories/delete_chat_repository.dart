@@ -4,5 +4,5 @@ import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 
 abstract class DeleteChatRepository {
   Future<Either<List<ChatEntity>, DeleteChatException>> call(
-      {required String userId, required String chatId});
+      {required String chatId});
 }

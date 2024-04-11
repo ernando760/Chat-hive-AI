@@ -11,7 +11,7 @@ class DeleteChatUsecase {
       {required String? userId, required String? chatId}) async {
     if (userId != null && userId.isNotEmpty) {
       if (chatId != null && chatId.isNotEmpty) {
-        return await _repository(userId: userId, chatId: chatId);
+        return await _repository(chatId: chatId);
       }
       return Failure(DeleteChatException(
           label: "$runtimeType", messageErro: "O id da conversa está vazio."));
