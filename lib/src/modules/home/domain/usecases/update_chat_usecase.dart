@@ -9,14 +9,14 @@ class UpdateChatUsecase {
   UpdateChatUsecase(this._repository);
 
   Future<Either<List<ChatEntity>, UpdateChatException>> call(
-      {required String? chatId, required String title}) async {
+      {required String? chatId, required ChatEntity newChat}) async {
     if (chatId != null && chatId.isNotEmpty) {
-      if (title.isEmpty) {
+      if (newChat.title.isEmpty) {
         return Failure(UpdateChatException(
             label: "$runtimeType",
             messageErro: "O titulo não pode está vazio."));
       }
-      return await _repository(chatId: chatId, title: title);
+      return await _repository(chatId: chatId, newChat: newChat);
     }
 
     return Failure(UpdateChatException(

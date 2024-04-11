@@ -4,5 +4,5 @@ import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 
 abstract class UpdateChatRepository {
   Future<Either<List<ChatEntity>, UpdateChatException>> call(
-      {required String chatId, required String title});
+      {required String chatId, required ChatEntity newChat});
 }
