@@ -38,6 +38,9 @@ final chats = <ChatEntity>[
   ChatEntity(chatId: "chat10", title: "title10", messages: messages),
 ];
 
+final newChat =
+    ChatEntity(chatId: "chat5", title: "chat update", messages: messages);
+
 final chatsToMap =
     List<ChatEntity>.from(chats).map((e) => ChatAdapter.toMap(e)).toList();
 
