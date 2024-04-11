@@ -9,28 +9,17 @@ class UpdateChatUsecase {
   UpdateChatUsecase(this._repository);
 
   Future<Either<List<ChatEntity>, UpdateChatException>> call(
-      {required ({String? userId, String? chatId}) ids,
-      required String title}) async {
-    if (ids.chatId != null && ids.userId != null) {
-      if (ids.chatId!.isEmpty) {
-        return Failure(UpdateChatException(
-            label: "$runtimeType",
-            messageErro: "O id da conversa está vazio."));
-      } else if (ids.userId!.isEmpty) {
-        return Failure(UpdateChatException(
-            label: "$runtimeType", messageErro: "O id do usuário está vazio."));
-      }
+      {required String? chatId, required String title}) async {
+    if (chatId != null && chatId.isNotEmpty) {
       if (title.isEmpty) {
         return Failure(UpdateChatException(
             label: "$runtimeType",
             messageErro: "O titulo não pode está vazio."));
       }
-      return await _repository(
-          ids: (chatId: ids.chatId!, userId: ids.userId!), title: title);
+      return await _repository(chatId: chatId, title: title);
     }
 
     return Failure(UpdateChatException(
-        label: "$runtimeType",
-        messageErro: "O id do usuário e da conversa está vazio."));
+        label: "$runtimeType", messageErro: "O id da conversa está vazio."));
   }
 }
