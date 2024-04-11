@@ -8,15 +8,11 @@ class DeleteChatUsecase {
 
   DeleteChatUsecase(this._repository);
   Future<Either<List<ChatEntity>, DeleteChatException>> call(
-      {required String? userId, required String? chatId}) async {
-    if (userId != null && userId.isNotEmpty) {
-      if (chatId != null && chatId.isNotEmpty) {
-        return await _repository(chatId: chatId);
-      }
-      return Failure(DeleteChatException(
-          label: "$runtimeType", messageErro: "O id da conversa está vazio."));
+      {required String? chatId}) async {
+    if (chatId != null && chatId.isNotEmpty) {
+      return await _repository(chatId: chatId);
     }
     return Failure(DeleteChatException(
-        label: "$runtimeType", messageErro: "O id do usuário está vazio."));
+        label: "$runtimeType", messageErro: "O id da conversa está vazio."));
   }
 }
