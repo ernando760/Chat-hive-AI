@@ -8,7 +8,7 @@ class MessageAdapter {
     return <String, dynamic>{
       'id': message.id,
       'message': message.message,
-      'sender': message.sender,
+      'sender': message.sender.name,
     };
   }
 
