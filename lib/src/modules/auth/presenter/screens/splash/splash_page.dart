@@ -1,7 +1,8 @@
 import 'package:chat_hive_ai/src/modules/auth/presenter/screens/auth_page.dart';
 import 'package:chat_hive_ai/src/modules/auth/presenter/screens/splash/notifier/splash_notifier.dart';
 import 'package:chat_hive_ai/src/modules/auth/presenter/screens/splash/provider/splash_provider.dart';
-import 'package:chat_hive_ai/src/screens/home_page.dart';
+import 'package:chat_hive_ai/src/modules/home/presenter/screens/home_page.dart';
+import 'package:chat_hive_ai/src/modules/home/presenter/widgets/wrapper/home_provider_wrapper_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +16,10 @@ class SplashPage extends StatelessWidget {
       builder: (context, child) {
         final notifier = context.watch<SplashNotifier>();
         if (notifier.user != null) {
-          return HomePage(
-            user: notifier.user,
+          return HomeProviderWrapperWidget(
+            child: HomePage(
+              user: notifier.user,
+            ),
           );
         }
         return const AuthPage();
