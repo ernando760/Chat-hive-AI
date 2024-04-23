@@ -1,16 +1,37 @@
-# chat_hive_ai
+# Chat Hive AI
 
-A new Flutter project.
+O Aplicativo foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolvimento de aplicativos móveis feito em flutter.
 
-## Getting Started
+## Como configurar o projeto
 
-This project is a starting point for a Flutter application.
+### Firebase
 
-A few resources to get you started if this is your first Flutter project:
+Esse app usa os serviços do Firebase que são o firebase auth e o firestore database, para fazer as configurações acesse este link [configurando o firebase]().<br/>
+(caso se você tem conhecimentos dos serviços do Firebase pricipalmente saber fazer a configuração do provedor do Google **não precisa acessar o link**).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Gemini
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+E depois de configurar o Firebase vamos fazer a configuração da API KEY do gemini.
+
+Primeiro criar uma api key do gemini [aqui](https://aistudio.google.com/app/apikey), depois de cria a chave, na raiz do projeto cria uma pasta **.config** dentro dela cria um arquivo **config.json** e adiciona esse código.
+
+```json
+{
+    "API_KEY_GEMINI": "SUA_CHAVE"
+}
+```
+
+O ultimo passo de configurar a API_KEY, vai no arquivo **.vscode/launch.json** e adiciona esse código.
+
+```json
+{
+   "request": "launch",
+   "type": "dart",
+   "args": [
+                "--dart-define-from-file",
+                ".config/config.json"
+            ]
+}
+```
+
+E pronto voçê já fez a configuração da API KEY do Gemini, muito simples.
