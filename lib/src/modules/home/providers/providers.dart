@@ -6,7 +6,10 @@ import 'package:chat_hive_ai/src/modules/home/infra/repositories/firebase/fireba
 import 'package:chat_hive_ai/src/modules/home/infra/repositories/firebase/firebase_delete_chat_repository_impl.dart';
 import 'package:chat_hive_ai/src/modules/home/infra/repositories/firebase/firebase_find_all_chats_of_user_repository_impl.dart';
 import 'package:chat_hive_ai/src/modules/home/infra/repositories/firebase/firebase_update_chat_repository_impl.dart';
+import 'package:chat_hive_ai/src/modules/home/presenter/notifiers/chat_notifier.dart';
 import 'package:provider/provider.dart';
+
+// usecase
 
 final $FindAllChatsOfUserUsecaseProvider = Provider(
     create: (context) =>
@@ -21,3 +24,13 @@ final $DeleteChatUsecaseProvider = Provider(
 
 final $UpdateChatUsecaseProvider = Provider(
     create: (context) => UpdateChatUsecase(FirebaseUpdateChatRepositoryImpl()));
+
+// notifiers
+
+final $ChatNotifier = ChangeNotifierProvider(
+  create: (context) => ChatNotifier(
+      context.read<FindAllChatsOfUserUsecase>(),
+      context.read<CreateNewChatUsecase>(),
+      context.read<DeleteChatUsecase>(),
+      context.read<UpdateChatUsecase>()),
+);
