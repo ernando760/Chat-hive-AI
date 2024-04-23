@@ -26,6 +26,10 @@ class FirebaseSignUpServiceImpl implements SignUpService {
           email: userDto.email.email, password: userDto.password.password);
 
       if (credential.user != null) {
+        await _firebaseFirestore
+            .collection("emails")
+            .doc()
+            .set({"email": userDto.email.email});
         await credential.user!.updateDisplayName(userDto.username);
         await credential.user!.updatePhotoURL(userDto.avatarUrl);
         final user = UserEntity(

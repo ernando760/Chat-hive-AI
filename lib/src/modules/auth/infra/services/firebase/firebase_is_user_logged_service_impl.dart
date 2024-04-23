@@ -19,6 +19,7 @@ class FirebaseIsUserLoggedServiceImpl implements IsUserLoggedService {
       final isLogged = firebaseAuth.currentUser != null;
       if (isLogged) {
         final user = UserEntity(
+            id: firebaseAuth.currentUser!.uid,
             username: firebaseAuth.currentUser!.displayName!,
             email: EmailDto(email: firebaseAuth.currentUser!.email!));
         return Success(user);
