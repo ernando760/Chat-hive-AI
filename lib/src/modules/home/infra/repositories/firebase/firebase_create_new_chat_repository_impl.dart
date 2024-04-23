@@ -15,9 +15,9 @@ class FirebaseCreateNewChatRepositoryImpl implements CreateNewChatRepository {
 
       final doc = coll.doc();
       await doc.set({
-        "userId": userId,
+        "user_id": userId,
         "title": title,
-        "chatId": doc.id,
+        "chat_id": doc.id,
         "messages": [],
         "created_at": DateTime.now().millisecondsSinceEpoch
       });

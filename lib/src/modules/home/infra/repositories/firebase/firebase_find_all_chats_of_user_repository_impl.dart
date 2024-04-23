@@ -19,7 +19,7 @@ class FirebaseFindAllChatsOfUserRepositoryImpl
         return Success([]);
       }
       final chats = query.docs
-          .where((element) => element.data()["userId"] == userId)
+          .where((element) => element.data()["user_id"] == userId)
           .map((e) => ChatAdapter.fromMap(e.data()))
           .toList();
 
