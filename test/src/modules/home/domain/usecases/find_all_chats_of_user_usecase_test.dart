@@ -31,7 +31,7 @@ void main() {
   });
 
   test(
-      "Deve retornar uma Exceção com a messagem dizendo 'O id do usuário está vazio.', quando chamo a função [findAllchatsOfUserUsecase.call]",
+      "Deve retornar uma Exceção com a messagem dizendo 'O id do usuário está vazio.' quando chamo a função [findAllchatsOfUserUsecase.call]",
       () async {
     when(
       () => repository.call(userId: "", limits: 10),
