@@ -22,7 +22,14 @@ dependencies:
   equatable: ^2.0.5
   firebase_auth: ^4.17.9
   google_sign_in: ^6.2.1
-  svg_flutter: ^0.0.1
+  svg_flutter: ^0.0.1  
+  google_generative_ai: ^0.3.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_markdown: ^0.7.0
+  animated_text_kit: ^4.2.2 
+  markdown: ^7.2.2
+  
   
 
 dev_dependencies:
