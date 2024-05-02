@@ -3,40 +3,33 @@
 </p>
 
 # tópicos
-* **[Sobre o App]()**
-* **[Como foi feito]()**
-* **[Como configurar o projeto]()**
+* **[Sobre o projeto](#sobre-o-projeto)**
+* **[Como foi feito?](#como-foi-feito)**
+* **[como configurar o projeto](#como-configurar-o-projeto)**
 
-# Sobre o App
 
-O Aplicativo foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolvimento de aplicativos móveis feito em flutter. O proposito do aplicativo é para ter um ou varios bate-papo com IA **(Inteligência Artificial)**.Nele voçê manda mensagem de texto e a IA gera uma resposta e retorna de volta, não tem como enviar messagem por voz por enquanto. a IA usado nesse projeto é o Gemini que foi desenvolvido pela a Google,e os servico de autentificação e de banco de dados usado no projeto é do Firebase que tambem é do Google, para fazer a configuração do Firebase e do Genini está abaixo no tópico [Como configurar o projeto]().
+<h1 id="sobre-o-projeto">Sobre o projeto</h1>
 
-# Como foi feito?
+O projeto foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolvimento de aplicativos móveis feito em flutter. O proposito do aplicativo é para ter um ou varios bate-papo com IA **(Inteligência Artificial)**.Nele voçê manda mensagem de texto e a IA gera uma resposta e retorna de volta, não tem como enviar messagem por voz por enquanto. a IA usado nesse projeto é o Gemini que foi desenvolvido pela a Google,e os servico de autentificação e de banco de dados usado no projeto é do Firebase que tambem é do Google, para fazer a configuração do Firebase e do Gemini está abaixo no tópico [Como configurar o projeto](https://github.com/ernando760/Chat-hive-AI/edit/main/README.md#como-configurar-o-projeto).
 
-O app foi desenvolvido junto com o pacote [chat hive core]("") que foi feito para o projeto **É obrigatorio esse pacote** para não dá nenhum problema, o design UI do projeto foi desenvolvido no figma [chat_hive_ai_design_UI](https://www.figma.com/file/8s97OZwdXyUAf3JexTxn84/Chat-hive-AI?type=design&node-id=13%3A2530&mode=design&t=XTfdKeaeOTLvKNAL-1).
+<h1 id="como-foi-feito">Como foi feito?</h1>
 
-## Design pattern
+O aplicativo foi desenvolvido junto com o pacote [chat hive core]("https://github.com/ernando760/chat-hive-ai-core") que foi feito para o projeto **É obrigatorio usar esse pacote** para não dá nenhum problema. O design UI do projeto foi desenvolvido no figma [chat_hive_ai_design_UI](https://www.figma.com/file/8s97OZwdXyUAf3JexTxn84/Chat-hive-AI?type=design&node-id=13%3A2530&mode=design&t=XTfdKeaeOTLvKNAL-1). O design pattern usado no projeto foi o MVVM, e os gerenciadores de estado usados, são o Provider e o ChangeNotifier.
 
-* MVVM
- 
-## Gerenciadores de estado
+<h1 id="como-configurar-o-projeto">Como configurar o projeto?</h1>
 
-* Provider
-* ChangeNotifier
+**Primeiro faça o clone do projeto e do pacote [chat hive core](https://github.com/ernando760/chat-hive-ai-core), para fazer as configurações**.
 
-## Como configurar o projeto?
+## Firebase
 
-**Primeiro faça o clone do projeto e do pacote [chat hive core](), para fazer as configurações**.
-
-### Firebase
-
-**OBS: As configurações do firebase só foram feita na plataforma android. E se voçê tem conhecimento dos servicos do firebase e principalmente saber fazer as configuracões do provedor de autentificação do Google, então pode pular para a configuração do Gemini.**
+> [!WARNING]
+> **As configurações do firebase só foram feita na plataforma Android. Se voçê tem conhecimento dos servicos do firebase e principalmente saber fazer as configuracões do provedor de autentificação do Google, então pode pular para a configuração do Gemini.**
 
 Para fazer as configurações do Firebase segue as seguites etapas;
 
 * Cria um projeto no [console do firebase](https://console.firebase.google.com/). 
 * Adiciona um aplicativo android no projeto.
-* Adiciona o serviço de autentificação e de banco de dados (que é o firestore).
+* Adiciona o serviço de autentificação e de banco de dados **(que no projeto usa o firestore)**.
 
 No aplicativo usa o provedor de autentificação do google, se voçẽ tem conhecimento de como fazer a configuração, então vai para a configuração do Gemini. Então, para fazer a configuração do provedor de autentificação do google, voçê deve seguir as seguites etapas.
 
@@ -47,7 +40,7 @@ Primeiro abra o seu terminal e entra na pastas **android** do projeto, e executa
 ```
 Deve retornar algo parecido com isso.
 
-```bash
+```
 > Task :app:signingReport
 Variant: debug
 Config: debug
@@ -65,12 +58,12 @@ Depois, copia o SEU_SHA1 e o SEU_SHA256, e vai no seu projeto que voçê criou n
 
 **E pronto!** voçê já finalizou a configuração do firebase do seu projeto.
   
-### Gemini
+## Gemini
 
 E depois de configurar o Firebase vamos fazer a configuração da API KEY do gemini.
 
 Primeiro criar uma api key do gemini [aqui](https://aistudio.google.com/app/apikey), depois de cria a chave, na raiz do projeto cria uma pasta **.config** dentro dela cria um arquivo **config.json** e adiciona esse código.
-
+    
 ```json
 {
     "API_KEY_GEMINI": "SUA_CHAVE"
