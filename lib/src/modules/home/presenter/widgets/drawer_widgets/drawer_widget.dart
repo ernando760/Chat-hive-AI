@@ -1,3 +1,5 @@
+import 'package:chat_hive_ai/src/modules/auth/presenter/provider/barrel/auth_provider_barrel.dart';
+import 'package:chat_hive_ai/src/modules/home/presenter/widgets/chat_widgets/menu_card_chat_configs_widget.dart';
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/drawer_widgets/info_user_drawer_widget.dart';
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/drawer_widgets/list_view_chat_drawer_widget.dart';
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/drawer_widgets/button_new_chat_drawer_widget.dart';
@@ -23,19 +25,37 @@ class DrawerWidget extends StatelessWidget {
           ],
         ),
         bodyDrawer: const ListViewChatDrawerWidget(),
-        footerDrawer: ChatHiveAiButton(
-          padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 5),
-          child: Row(
-            children: [
-              const Icon(Icons.settings_outlined, size: 26),
-              const SizedBox(width: 5),
-              Text(
-                "Configurações",
-                style: context.body16Medium,
-              )
-            ],
-          ),
-          onPressed: () {},
+        footerDrawer: Provider(
+          create: (context) => MenuController(),
+          builder: (context, _) {
+            final menuController = context.watch<MenuController>();
+            return MenuCardChatConfigsWidget(
+                menuController: menuController,
+                alignmentOffset: Offset(
+                    context.sizeOf.width * .8, context.sizeOf.height * -.19),
+                items: const [ChatHiveAiToggleThemeButton()],
+                child: ChatHiveAiButton(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 9, horizontal: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.settings_outlined, size: 26),
+                      const SizedBox(width: 5),
+                      Text(
+                        "Configurações",
+                        style: context.body16Medium,
+                      )
+                    ],
+                  ),
+                  onPressed: () {
+                    if (menuController.isOpen) {
+                      menuController.close();
+                      return;
+                    }
+                    menuController.open();
+                  },
+                ));
+          },
         ),
       ),
     );

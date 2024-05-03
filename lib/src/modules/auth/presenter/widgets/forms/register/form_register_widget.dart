@@ -20,7 +20,7 @@ class FormRegisterWidget extends StatefulWidget {
 }
 
 class _FormRegisterWidgetState extends State<FormRegisterWidget>
-    with MessageViewMixin {
+    with MessagesViewMixin {
   final formRegisterKey = GlobalKey<FormState>();
 
   @override
@@ -60,7 +60,7 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget>
                       formRegisterKey.currentState?.validate() ?? false;
                   if (isValid) {
                     await notifier.signUp();
-                    messageViewListener(notifier);
+                    messagelistener(notifier);
                     if (notifier.user != null) {
                       nav.pushReplacementNamed("/home",
                           arguments: notifier.user);
@@ -75,7 +75,7 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget>
                 onPressed: () async {
                   final nav = Navigator.of(context);
                   await notifier.signInGoogle();
-                  messageViewListener(notifier);
+                  messagelistener(notifier);
                   if (notifier.user != null) {
                     nav.pushReplacementNamed("/home", arguments: notifier.user);
                   }

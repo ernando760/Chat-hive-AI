@@ -17,7 +17,7 @@ class FormLoginWidget extends StatefulWidget {
 }
 
 class _FormLoginWidgetState extends State<FormLoginWidget>
-    with MessageViewMixin {
+    with MessagesViewMixin {
   final formLoginKey = GlobalKey<FormState>();
 
   @override
@@ -53,7 +53,7 @@ class _FormLoginWidgetState extends State<FormLoginWidget>
                       formLoginKey.currentState?.validate() ?? false;
                   if (isValid) {
                     await notifier.signIn();
-                    messageViewListener(notifier);
+                    messagelistener(notifier);
                     if (notifier.user != null) {
                       nav.pushReplacementNamed("/home",
                           arguments: notifier.user);
@@ -68,7 +68,7 @@ class _FormLoginWidgetState extends State<FormLoginWidget>
                 onPressed: () async {
                   final nav = Navigator.of(context);
                   await notifier.signInGoogle();
-                  messageViewListener(notifier);
+                  messagelistener(notifier);
                   if (notifier.user != null) {
                     nav.pushReplacementNamed("/home", arguments: notifier.user);
                   }
