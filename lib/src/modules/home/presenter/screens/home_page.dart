@@ -7,7 +7,6 @@ import 'package:chat_hive_ai/src/modules/home/presenter/widgets/chat_widgets/mes
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/chat_widgets/prompt_message_widget.dart';
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/drawer_widgets/drawer_widget.dart';
 import 'package:chat_hive_ai/src/modules/home/presenter/widgets/floating_button_widget.dart';
-import 'package:chat_hive_ai/src/shared/utils/messages_view_mixin.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:flutter/material.dart';
 
