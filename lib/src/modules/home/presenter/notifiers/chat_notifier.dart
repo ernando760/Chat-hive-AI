@@ -11,7 +11,6 @@ import 'package:chat_hive_ai/src/modules/home/domain/usecases/update_chat_usecas
 import 'package:chat_hive_ai/src/modules/home/presenter/notifiers/loading_notifier_mixin.dart';
 import 'package:chat_hive_ai/src/shared/cache/app_cache.dart';
 import 'package:chat_hive_ai/src/shared/env/env.dart';
-import 'package:chat_hive_ai/src/shared/utils/messages_state_mixin.dart';
 import 'package:chat_hive_ai_core/chat_hive_ai_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
