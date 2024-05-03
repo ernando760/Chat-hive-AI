@@ -23,7 +23,7 @@ class AuthTextButtonWidget extends StatelessWidget {
                   ? "Você já tem uma conta? entra aqui"
                   : "Você não tem uma conta? cadastra-se aqui",
               style: context.caption10Medium.copyWith(
-                  color: context.isDark ? context.gray : context.black2),
+                  color: context.isDark ? context.lightGrey : context.darkGrey),
             )),
       ),
     );

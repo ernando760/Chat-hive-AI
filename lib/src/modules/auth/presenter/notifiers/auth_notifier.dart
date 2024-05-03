@@ -18,7 +18,7 @@ final $AuthNotifierProvider = ChangeNotifierProvider<AuthNotifier>(
 enum TypeAuth { signIn, signUp }
 
 class AuthNotifier extends ChangeNotifier
-    with FormAuthMixin, MessageStateMixin {
+    with FormAuthMixin, MessagesStateMixin {
   AuthNotifier(
       this._signUpUsecase, this._signInUsecase, this._signInGoogleUsecase);
 
@@ -58,7 +58,7 @@ class AuthNotifier extends ChangeNotifier
       case Failure(:final failure):
         log(failure.messageErro,
             error: failure.label, stackTrace: failure.stackTrace);
-        showError(failure.messageErro);
+        showMessageError(failure.messageErro);
         _setLoading(false);
     }
   }
@@ -78,7 +78,7 @@ class AuthNotifier extends ChangeNotifier
       case Failure(:final failure):
         log(failure.messageErro,
             error: failure.label, stackTrace: failure.stackTrace);
-        showError(failure.messageErro);
+        showMessageError(failure.messageErro);
         _setLoading(false);
     }
   }
@@ -96,7 +96,7 @@ class AuthNotifier extends ChangeNotifier
         user = null;
         log(failure.messageErro,
             error: failure.label, stackTrace: failure.stackTrace);
-        showError(failure.messageErro);
+        showMessageError(failure.messageErro);
         _setLoading(false);
     }
   }
