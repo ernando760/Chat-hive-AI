@@ -19,13 +19,20 @@ class CardMessageWidget extends StatelessWidget {
             color: message.sender == MessageSender.me
                 ? context.purple
                 : context.isDark
-                    ? context.black2
-                    : context.gray,
+                    ? context.darkGrey
+                    : context.lightGrey,
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: MarkdownBody(
           data: message.message,
           styleSheet: MarkdownStyleSheet(
-              p: context.caption12Medium.copyWith(fontSize: 15)),
+              p: context.caption12Medium.copyWith(
+                  fontSize: 15,
+                  color: message.sender == MessageSender.me &&
+                          (context.isDark || !context.isDark)
+                      ? context.white
+                      : message.sender == MessageSender.robot && context.isDark
+                          ? context.white
+                          : context.black)),
         ),
       ),
     );

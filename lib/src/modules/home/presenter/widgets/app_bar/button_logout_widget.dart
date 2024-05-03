@@ -42,8 +42,8 @@ class ButtonLogoutWidget extends StatelessWidget {
               },
               style: IconButton.styleFrom(
                   backgroundColor: context.isDark
-                      ? context.black2.withOpacity(.5)
-                      : context.gray.withOpacity(.5)),
+                      ? context.darkGrey.withOpacity(.5)
+                      : context.lightGrey.withOpacity(.5)),
             ),
           );
         });
