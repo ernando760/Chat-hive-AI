@@ -20,7 +20,8 @@ class FirebaseSignInServiceImpl implements SignInService {
       final isExist = await _isEmailExist(userDto.email.email);
       if (!isExist) {
         return Failure(SignInServiceException(
-            label: "$runtimeType", messageErro: "Este email não existe."));
+            label: "$runtimeType",
+            messageErro: "O email ou senha está invalida"));
       }
       final credential = await firebaseAuth.signInWithEmailAndPassword(
           email: userDto.email.email, password: userDto.password.password);

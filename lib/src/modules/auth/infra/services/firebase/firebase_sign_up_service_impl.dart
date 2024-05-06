@@ -20,7 +20,8 @@ class FirebaseSignUpServiceImpl implements SignUpService {
       final isExist = await _isEmailExist(userDto.email.email);
       if (isExist) {
         return Failure(SignUpServiceException(
-            label: "$runtimeType", messageErro: "Este email já existe."));
+            label: "$runtimeType",
+            messageErro: "O email ou senha está invalida"));
       }
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
           email: userDto.email.email, password: userDto.password.password);
