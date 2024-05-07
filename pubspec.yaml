@@ -27,7 +27,23 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_markdown: ^0.7.0
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
   
+
+flutter_native_splash:
+  android: true
+  color: "#ffffff"
+  image: "assets/app/logo_splash_chat_hive_ai_black.png" 
+  color_dark: "#0C120C"
+  image_dark: "assets/app/logo_splash_chat_hive_ai_white.png"
+
+flutter_icons:
+  image_path: "assets/app/logo_app_chat_hive_ai.png"
+  android: "ic_launcher"
+  background_color: "#ffffff"
+  #adaptive_icon_background: "#ffffff"
+  #adaptive_icon_foreground: "assets/app/logo_app_chat_hive_ai.png"
 
 dev_dependencies:
   flutter_test:
