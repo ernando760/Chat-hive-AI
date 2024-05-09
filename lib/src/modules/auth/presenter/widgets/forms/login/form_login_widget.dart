@@ -53,7 +53,6 @@ class _FormLoginWidgetState extends State<FormLoginWidget>
                       formLoginKey.currentState?.validate() ?? false;
                   if (isValid) {
                     await notifier.signIn();
-                    messagelistener(notifier);
                     if (notifier.user != null) {
                       nav.pushReplacementNamed("/home",
                           arguments: notifier.user);

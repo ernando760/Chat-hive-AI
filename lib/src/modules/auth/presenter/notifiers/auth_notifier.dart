@@ -54,7 +54,6 @@ class AuthNotifier extends ChangeNotifier
       case Success(:final success):
         user = success;
         _setLoading(false);
-        break;
       case Failure(:final failure):
         log(failure.messageErro,
             error: failure.label, stackTrace: failure.stackTrace);

@@ -60,7 +60,6 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget>
                       formRegisterKey.currentState?.validate() ?? false;
                   if (isValid) {
                     await notifier.signUp();
-                    messagelistener(notifier);
                     if (notifier.user != null) {
                       nav.pushReplacementNamed("/home",
                           arguments: notifier.user);
@@ -75,7 +74,6 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget>
                 onPressed: () async {
                   final nav = Navigator.of(context);
                   await notifier.signInGoogle();
-                  messagelistener(notifier);
                   if (notifier.user != null) {
                     nav.pushReplacementNamed("/home", arguments: notifier.user);
                   }
