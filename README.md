@@ -14,7 +14,7 @@ O projeto foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolv
 
 <h1 id="como-foi-feito">Como foi feito?</h1>
 
-O aplicativo foi desenvolvido junto com o pacote [chat hive core]("https://github.com/ernando760/chat-hive-ai-core") que foi feito para o projeto **É obrigatorio usar esse pacote** para não dá nenhum problema. O design UI do projeto foi desenvolvido no figma [chat_hive_ai_design_UI](https://www.figma.com/file/8s97OZwdXyUAf3JexTxn84/Chat-hive-AI?type=design&node-id=13%3A2530&mode=design&t=XTfdKeaeOTLvKNAL-1). O design pattern usado no projeto foi o MVVM, e os gerenciadores de estado usados, são o Provider e o ChangeNotifier.
+O aplicativo foi desenvolvido junto com o pacote [chat hive core]("https://github.com/ernando760/chat-hive-ai-core") que foi feito para o projeto **é obrigatorio usar esse pacote** para não dá nenhum problema. O design UI do projeto foi desenvolvido no figma [chat_hive_ai_design_UI](https://www.figma.com/file/8s97OZwdXyUAf3JexTxn84/Chat-hive-AI?type=design&node-id=13%3A2530&mode=design&t=XTfdKeaeOTLvKNAL-1). O design pattern usado no projeto foi o MVVM, e os gerenciadores de estado usados, são o Provider e o ChangeNotifier.
 
 <h1 id="como-configurar-o-projeto">Como configurar o projeto?</h1>
 
