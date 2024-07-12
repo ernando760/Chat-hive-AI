@@ -10,7 +10,7 @@
 
 <h1 id="sobre-o-projeto">Sobre o projeto</h1>
 
-O projeto foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolvimento de aplicativos móveis feito em flutter. O proposito do aplicativo é para ter um ou varios bate-papo com IA **(Inteligência Artificial)**.Nele voçê manda mensagem de texto e a IA gera uma resposta e retorna de volta, não tem como enviar messagem por voz por enquanto. a IA usado nesse projeto é o Gemini que foi desenvolvido pela a Google,e os servico de autentificação e de banco de dados usado no projeto é do Firebase que tambem é do Google, para fazer a configuração do Firebase e do Gemini está abaixo no tópico [Como configurar o projeto](https://github.com/ernando760/Chat-hive-AI/edit/main/README.md#como-configurar-o-projeto).
+O projeto foi desenvolvido com intuito de aprimorar meu aprendizado em desenvolvimento de aplicativos móveis feito em flutter. O proposito do aplicativo é para ter um ou varios bate-papo com IA **(Inteligência Artificial)**. Nele você manda mensagem de texto e a IA gera uma resposta e retorna de volta, não tem como enviar messagem por voz por enquanto. a IA usado nesse projeto é o Gemini que foi desenvolvido pela a Google,e os servico de autentificação e de banco de dados usado no projeto é do Firebase que tambem é do Google, para fazer a configuração do Firebase e do Gemini está abaixo no tópico [Como configurar o projeto](https://github.com/ernando760/Chat-hive-AI/edit/main/README.md#como-configurar-o-projeto).
 
 <h1 id="como-foi-feito">Como foi feito?</h1>
 
@@ -31,7 +31,7 @@ Para fazer as configurações do Firebase segue as seguites etapas;
 * Adiciona um aplicativo android no projeto.
 * Adiciona o serviço de autentificação e de banco de dados **(que no projeto usa o firestore)**.
 
-No aplicativo usa o provedor de autentificação do google, se voçẽ tem conhecimento de como fazer a configuração, então vai para a configuração do Gemini. Então, para fazer a configuração do provedor de autentificação do google, voçê deve seguir as seguites etapas.
+No aplicativo usa o provedor de autentificação do google, se você tem conhecimento de como fazer a configuração, então vai para a configuração do Gemini. Então, para fazer a configuração do provedor de autentificação do google, você deve seguir as seguites etapas.
 
 Primeiro abra o seu terminal e entra na pastas **android** do projeto, e executa o seguinte comando.
 
